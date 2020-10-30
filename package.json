@@ -1,0 +1,42 @@
+{
+  "name": "webjet",
+  "version": "1.0.0",
+  "description": "web chat application",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChamathVindula/webjet.git"
+  },
+  "keywords": [
+    "web",
+    "chat",
+    "app"
+  ],
+  "author": "Chamath Milleniya",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChamathVindula/webjet/issues"
+  },
+  "homepage": "https://github.com/ChamathVindula/webjet#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.6"
+  },
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "connect-ensure-login": "^0.1.1",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mysql2": "^2.2.5",
+    "passport": "^0.4.1",
+    "passport-google-oauth": "^2.0.0",
+    "sequelize": "^6.3.5",
+    "sequelize-cli": "^6.2.0",
+    "socket.io": "^2.3.0"
+  }
+}

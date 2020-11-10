@@ -1,0 +1,102 @@
+$primary: rgb(130, 136, 203);
+$secondary: rgb(158, 162, 227);
+$tertiary: rgb(109, 103, 216);
+$lightGrey: rgb(245, 245, 245);
+$intermediatetGrey: rgb(220, 220, 220);
+$darkGrey: rgb(214, 214, 214);
+
+.chat-window-main{
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+}
+
+.user-profile-pic{
+    border-radius: 50px;
+    width: 60px;
+    height: 60px;
+    margin: 10px 20px;
+}
+
+input[class=chat-page-inputs]{
+    flex: 1;
+    width: 100%;
+    background-color: $lightGrey;
+    border: none;
+    border-radius: 25px;
+    height: 2em;
+    margin: 10px 20px;
+    padding: 10px;
+}
+
+input[class=chat-page-inputs]:focus{
+    outline: none;
+}
+
+.chat-search{
+    display: flex;
+}
+
+.chat-window-chats{
+    height: 100vh;
+    border-right: 1px solid $darkGrey;
+}
+
+.chat-window-connection-pane{
+    height: 100vh;
+    border-left: 1px solid $darkGrey;
+}
+
+.chat-list-card{
+    border-radius: 7px;
+    margin: 20px 20px;
+}
+
+.chat-list-card-img{
+    border-radius: 50px;
+    width: 45px;
+    height: 45px;
+}
+
+.chat-window-current-chat-messages-pane{
+    overflow-y: scroll;
+    height: 94vh;
+}
+
+.send-message{
+    margin: 10px;
+    width: 45px;
+}
+
+.connection-message{
+    width: fit-content;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: $intermediatetGrey;
+    margin: 5px 0 5px 20px;
+}
+
+.client-message{
+    color: white;
+    width: fit-content;
+    border-radius: 25px;
+    padding: 10px;
+    background-color: $tertiary;
+    margin: 5px 20px 5px 0
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+::-webkit-scrollbar-track {
+display: none;
+}
+
+::-webkit-scrollbar-thumb {
+background: $intermediatetGrey; 
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+background: $darkGrey; 
+}

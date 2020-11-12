@@ -7,8 +7,8 @@ const bodyParser = require('body-parser');
 const authRoutes = require('./routes/auth');
 const Socket = require('./utils/socket.io');
 const passport = require('./auth/passport');
+const chatRoutes = require('./routes/chat');
 const expressSession = require('express-session');
-const ensurelogin = require('connect-ensure-login');
 const redisStore = require('./utils/redis')(expressSession);
 
 const app = express();
@@ -36,13 +36,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(authRoutes);
+app.use(chatRoutes);
 
 app.get('/', (req, res) => {
     res.render('login.ejs');
-});
-
-app.get('/chat', ensurelogin.ensureLoggedIn('/'), (req, res) => {
-    res.render('chat.ejs', { user: req.user });
 });
 
 server.listen(port, () => {

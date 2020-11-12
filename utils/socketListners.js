@@ -19,8 +19,22 @@ module.exports = (socketio) => {
 async function handleIncommingMessage(message){
     let receiverAvailable = await redisGet(message.receiver);
     let connection = await checkConnectionAvailability([message.receiver, message.sender]);
-    db.Messages.create({ from: message.sender, to: message.receiver, connectionId: connection.id, message: message.message, status: 'unread' })
-    .then(messsage => {
+    db.sequelize.transaction(t => {
+        return Promise.all([
+            db.Messages.create({ from: message.sender, to: message.receiver, connectionId: connection.id, message: message.message, status: 'unread' }, { transaction: t }),
+            db.Connections.update(
+                { lastActive: new Date() }, 
+                { where: {
+                        [db.Sequelize.Op.and]: [ 
+                            { userLeft: { [db.Sequelize.Op.in]: [message.receiver, message.sender] }}, 
+                            { userRight: { [db.Sequelize.Op.in]: [message.receiver, message.sender] }} 
+                        ] 
+                }},
+                { transaction: t }
+            )
+        ])
+    })
+    .then(response => {
         if(receiverAvailable) io.to(receiverAvailable).emit('chat message', message);
     })
     .catch(err => {

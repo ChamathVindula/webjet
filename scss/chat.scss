@@ -51,6 +51,11 @@ input[class=chat-page-inputs]:focus{
     margin: 20px 20px;
 }
 
+.chat-list-card:hover{
+    cursor: pointer;
+    background-color: $lightGrey;
+}
+
 .chat-list-card-img{
     border-radius: 50px;
     width: 45px;
